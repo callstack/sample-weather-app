@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './web/App';
+import { AppRegistry } from 'react-native';
+import App from 'web/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+AppRegistry.registerComponent('WeatherApp', () => App);
+AppRegistry.runApplication('WeatherApp', { rootTag: document.getElementById('root') });

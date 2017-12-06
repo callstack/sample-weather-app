@@ -10,6 +10,8 @@ import {
   StatusBar,
 } from 'react-native';
 
+import Header from 'shared/Header';
+
 const WeatherView = ({ icon, description, town, temp, date }) => (
   <View style={styles.weatherContainer}>
     <Text style={styles.town}>{town}</Text>
@@ -67,9 +69,9 @@ export default class App extends Component {
             date={date}
           />
         ) : (
-          <Text style={styles.instructions}>
+          <Header>
             Type town name to see current weather
-          </Text>
+          </Header>
         )}
         <TextInput
           style={styles.input}
@@ -90,14 +92,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#48717A',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-    backgroundColor: 'transparent',
-    color: 'white',
-    fontSize: 16,
   },
   input: { 
     backgroundColor: '#eeeeee',

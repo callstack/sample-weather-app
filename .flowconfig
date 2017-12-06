@@ -15,6 +15,7 @@
 
 ; Ignore polyfills
 .*/Libraries/polyfills/.*
+.*/node_modules/animated/src/.*
 
 [include]
 
