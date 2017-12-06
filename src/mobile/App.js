@@ -53,7 +53,7 @@ export default class App extends Component {
     const { inputText, condition, town, temp, date } = this.state;
     
     return (
-      <ImageBackground style={styles.container} source={require('../assets/sky.jpg')}>
+      <ImageBackground style={styles.container} source={require('../../assets/sky.jpg')}>
         <StatusBar
           backgroundColor="transparent"
           barStyle="light-content"

@@ -1,3 +1,3 @@
 module.exports = ({ platform }) => ({
-  entry: `./index.js`,
+  entry: './src/index.mobile.js',
 });
