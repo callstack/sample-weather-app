@@ -1,20 +1,56 @@
+/* @flow */
 import React, { Component } from 'react';
 
 import Header from 'shared/Header';
+import Container from 'shared/Container';
+import Input from 'shared/Input';
+import WeatherView from 'shared/WeatherView';
 
-class App extends Component {
+import withWeather from 'shared/withWeather';
+
+type Props = {|
+  weather: Weather,
+  fetchWeatherData: (query: string) => void
+|};
+
+type State = {|
+  inputText: string,
+|}
+
+class App extends Component<Props, State> {
+  state = {
+    inputText: '',
+  }
+
   render() {
+    const { weather, fetchWeatherData } = this.props;
+    const { inputText } = this.state;
+
     return (
-      <div className="App" style={{ backgroundColor: 'darkblue' }}>
-        <Header>
-          Type town name to see current weather
-        </Header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Container>
+        {weather ? (
+          <WeatherView 
+            icon={weather.condition.icon}
+            description={weather.condition.text}
+            town={weather.town}
+            temp={weather.temp}
+            date={weather.date}
+          />
+        ) : (
+          <Header>
+            Type town name to see current weather
+          </Header>
+        )}
+        <Input
+          onChangeText={(text) => { 
+            this.setState(() => ({ inputText: text })); 
+          }} 
+          onSubmitEditing={() => { fetchWeatherData(inputText); }}
+          value={inputText}
+        />
+      </Container>
     );
   }
 }
 
-export default App;
+export default withWeather(App);
